@@ -4,13 +4,15 @@ TMP_FOLDER=$(mktemp -d)
 CONFIG_FILE="PentaNode.conf"
 CONFIG_FOLDER=".PentaNode"
 BINARY_FILE="/usr/local/bin/PentaNoded"
-PENTA_REPO="https://github.com/PentaNode/Pentanode-wallet.git"
-COIN_TGZ='https://www.pentanode-crypto.com/upload/bin/PentaNoded.gz'
+PENTA_REPO="https://github.com/PentaNodeNetwork/Pentanode-wallet.git"
+COIN_TGZ='https://github.com/PentaNodeNetwork/Pentanode-wallet.git/PentaNoded.gz'
+#COIN_TGZ='https://www.pentanode-crypto.com/upload/bin/PentaNoded.gz'
+SSH_CONFIG="/etc/ssh/sshd_config"
+SSH_PORT=`grep Port $SSH_CONFIG | cut -d " " -f 2`
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m'
-
 
 function compile_error() {
 if [ "$?" -gt "0" ];
@@ -123,8 +125,8 @@ function enable_firewall() {
   echo -e "Installing and setting up firewall to allow incomning access on port ${GREEN}$PENTANODEPORT${NC}"
   ufw allow $PENTANODEPORT/tcp comment "Pentanode MN port" >/dev/null
   ufw allow $[PENTANODEPORT+1]/tcp comment "Pentanode RPC port" >/dev/null
-  ufw allow ssh >/dev/null 2>&1
-  ufw limit ssh/tcp >/dev/null 2>&1
+  ufw allow $SSH_PORT comment "SSH" >/dev/null 2>&1
+  ufw limit $SSH_PORT/tcp >/dev/null 2>&1
   ufw default allow outgoing >/dev/null 2>&1
   echo "y" | ufw enable >/dev/null 2>&1
 }
@@ -222,9 +224,22 @@ listen=1
 server=1
 daemon=1
 port=$PENTANODEPORT
-addnode=139.99.98.127
 addnode=139.99.98.128
 addnode=139.99.98.129
+addnode=149.28.98.179
+addnode=80.240.28.67
+addnode=103.91.189.159
+addnode=80.211.63.68
+addnode=45.76.155.100
+addnode=87.66.163.217
+addnode=45.32.91.237
+addnode=212.51.128.243
+addnode=213.252.244.117
+addnode=159.69.16.158
+addnode=62.138.18.152
+addnode=194.183.32.226
+addnode=163.172.37.154
+addnode=185.219.132.50
 EOF
 }
 
