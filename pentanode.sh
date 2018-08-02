@@ -5,7 +5,8 @@ CONFIG_FILE="PentaNode.conf"
 CONFIG_FOLDER=".PentaNode"
 BINARY_FILE="/usr/local/bin/PentaNoded"
 PENTA_REPO="https://github.com/PentaNodeNetwork/Pentanode-wallet.git"
-COIN_TGZ='https://github.com/PentaNodeNetwork/Pentanode-wallet.git/PentaNoded.gz'
+COIN_TGZ1='https://github.com/PentaNodeNetwork/Masternode-scripts/raw/master/PentaNoded.gz_aa'
+COIN_TGZ2='https://github.com/PentaNodeNetwork/Masternode-scripts/raw/master/PentaNoded.gz_bb'
 #COIN_TGZ='https://www.pentanode-crypto.com/upload/bin/PentaNoded.gz'
 SSH_CONFIG="/etc/ssh/sshd_config"
 SSH_PORT=`grep Port $SSH_CONFIG | cut -d " " -f 2`
@@ -91,8 +92,10 @@ clear
 
 function deploy_binaries() {
   cd $TMP
-  wget -q $COIN_TGZ >/dev/null 2>&1
-  gunzip PentaNoded.gz >/dev/null 2>&1
+  wget -q $COIN_TGZ1 >/dev/null 2>&1
+  wget -q $COIN_TGZ2 >/dev/null 2>&1
+  cat PentaNoded.gz_* | gunzip -c > PentaNoded
+  #gunzip PentaNoded.gz >/dev/null 2>&1
   chmod +x PentaNoded >/dev/null 2>&1
   cp PentaNoded /usr/local/bin/ >/dev/null 2>&1
 }
