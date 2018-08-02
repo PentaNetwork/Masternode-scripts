@@ -4,7 +4,7 @@ Shell script to install a [Pentanode Masternode](https://bitcointalk.org/index.p
 
 ## Installation for v1.1.0.1-60010:
 ```
-wget -q https://raw.githubusercontent.com/PentaNetworkNode/Masternode/master/pentanode.sh
+wget -q https://raw.githubusercontent.com/PentaNodeNetwork/Masternode-scripts/master/pentanode.sh
 chmod 755 pentanode.sh
 ./pentanode.sh
 ```
