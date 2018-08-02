@@ -4,8 +4,9 @@ Shell script to install a [Pentanode Masternode](https://bitcointalk.org/index.p
 
 ## Installation for v1.1.0.1-60010:
 ```
-wget -q https://raw.githubusercontent.com/PentaNode/Masternode/master/pentanode.sh
-bash pentanode.sh
+wget -q https://raw.githubusercontent.com/PentaNetworkNode/Masternode/master/pentanode.sh
+chmod 755 pentanode.sh
+./pentanode.sh
 ```
 ***
 
@@ -13,7 +14,7 @@ bash pentanode.sh
 
 After the MN is up and running, you need to configure the desktop wallet accordingly. Here are the steps:  
 1. Open the Pentanode Desktop Wallet.  
-2. Go to RECEIVE and create a New Address: **MN1**  
+2. Go to RECEIVE and create a New Address: **MN1**
 3. Send **2500** **5000** **10000** **15000** or **25000** PTN to **MN1**.
 4. Wait for 15 confirmations.  
 5. Go to **Help -> "Debug Window - Console"**  
